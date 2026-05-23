@@ -1,0 +1,166 @@
+/* stylelint-disable-next-line import-notation */
+@use "tailwindcss";
+
+/* Fuentes */
+@theme {
+  --font-bebas: 'Bebas Neue', cursive;
+  --font-montserrat: 'Montserrat', sans-serif;
+
+  /* Colores TuProfe */
+  --color-tp-green: #1AC06A;
+  --color-tp-green-dark: #006D38;
+  --color-tp-green-light: #4BE086;
+  --color-tp-cream: #FFF9ED;
+  --color-tp-cream-dark: #F3FCF1;
+  --color-tp-border: #E2D3B5;
+  --color-tp-gray: #B3B3B3;
+  --color-tp-dark: #0E150F;
+}
+
+/* Variables CSS globales */
+:root {
+  --tp-green: #1AC06A;
+  --tp-green-dark: #006D38;
+  --tp-green-light: #4BE086;
+  --tp-cream: #FFF9ED;
+  --tp-cream-dark: #F3FCF1;
+  --tp-border: #E2D3B5;
+  --tp-gray: #B3B3B3;
+  --tp-dark: #0E150F;
+  --font-bebas: 'Bebas Neue', cursive;
+  --font-montserrat: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-montserrat);
+  background-color: var(--tp-cream);
+  color: #222;
+}
+
+/* Botón primario TuProfe */
+.btn-tp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--tp-green);
+  color: white;
+  font-family: var(--font-bebas);
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.1s;
+
+  &:hover {
+    background-color: var(--tp-green-dark);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn-tp-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  border: 2px solid var(--tp-green);
+  color: var(--tp-green);
+  font-family: var(--font-bebas);
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+
+  &:hover {
+    background-color: var(--tp-green);
+    color: white;
+    transform: translateY(-1px);
+  }
+}
+
+/* Tarjeta estilo TuProfe */
+.card-tp {
+  background: white;
+  border: 1.5px solid var(--tp-border);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Sección de contenido legal */
+.legal-page {
+  min-height: 100vh;
+  background-color: var(--tp-cream);
+  padding-bottom: 3rem;
+}
+
+.legal-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+
+  h1 {
+    font-family: var(--font-bebas);
+    font-size: 2.5rem;
+    color: var(--tp-green-dark);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-family: var(--font-bebas);
+    font-size: 1.5rem;
+    color: var(--tp-green);
+    letter-spacing: 0.03em;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-family: var(--font-montserrat);
+    line-height: 1.75;
+    color: #444;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+
+    li {
+      font-family: var(--font-montserrat);
+      line-height: 1.75;
+      color: #444;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .last-updated {
+    font-size: 0.85rem;
+    color: var(--tp-gray);
+    margin-bottom: 2rem;
+  }
+
+  a {
+    color: var(--tp-green);
+    text-decoration: underline;
+  }
+}

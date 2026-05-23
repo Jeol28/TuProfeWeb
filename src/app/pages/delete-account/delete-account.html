@@ -1,0 +1,91 @@
+<div class="delete-page">
+  <div class="delete-container">
+
+    @if (!submitted()) {
+      <div class="delete-header">
+        <div class="delete-icon">🗑️</div>
+        <h1>Solicitar eliminación de cuenta</h1>
+        <p>
+          Puedes eliminar tu cuenta directamente desde la app en
+          <strong>Ajustes → Borrar cuenta</strong>.
+          Si prefieres hacerlo desde aquí, completa el formulario y procesaremos tu solicitud
+          en un plazo máximo de <strong>30 días</strong>.
+        </p>
+      </div>
+
+      <div class="alert-warning">
+        <strong>⚠️ Esta acción es irreversible.</strong>
+        Se eliminarán permanentemente tu cuenta, todas tus reseñas, calificaciones y datos asociados.
+      </div>
+
+      <form class="delete-form card-tp" (ngSubmit)="onSubmit()" #deleteForm="ngForm">
+        <div class="form-group">
+          <label for="email">Correo electrónico *</label>
+          <input
+            id="email"
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="tu&#64;correo.com"
+            required
+            class="form-input"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="username">Nombre de usuario *</label>
+          <input
+            id="username"
+            type="text"
+            [(ngModel)]="username"
+            name="username"
+            placeholder="Tu nombre de usuario en TuProfe"
+            required
+            class="form-input"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="reason">Motivo (opcional)</label>
+          <textarea
+            id="reason"
+            [(ngModel)]="reason"
+            name="reason"
+            placeholder="¿Por qué deseas eliminar tu cuenta?"
+            rows="4"
+            class="form-input"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="btn-delete"
+          [disabled]="!email || !username"
+        >
+          Solicitar eliminación
+        </button>
+      </form>
+    }
+
+    @if (submitted()) {
+      <div class="success-card card-tp">
+        <div class="success-icon">✅</div>
+        <h2>Solicitud recibida</h2>
+        <p>
+          Tu solicitud de eliminación de cuenta fue registrada exitosamente.
+          Procesaremos la eliminación de tu cuenta y todos tus datos asociados en
+          un plazo máximo de <strong>30 días</strong>.
+        </p>
+        <p>
+          Recibirás una confirmación en <strong>{{ email }}</strong> cuando el proceso esté completado.
+        </p>
+        <p class="success-note">
+          Si cambiaste de opinión, puedes seguir usando la app normalmente hasta que procesemos la solicitud.
+          Para cancelarla, contáctanos a <strong>jorgeolaya2803&#64;gmail.com</strong>.
+        </p>
+        <button class="btn-tp" (click)="resetForm()">Enviar otra solicitud</button>
+      </div>
+    }
+
+  </div>
+</div>
