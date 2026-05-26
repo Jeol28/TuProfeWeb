@@ -1,15 +1,15 @@
 <div class="delete-page">
   <div class="delete-container">
 
-    @if (!submitted()) {
+    @if (!submitted() && !isConfirming() && !hasError()) {
       <div class="delete-header">
         <div class="delete-icon">🗑️</div>
         <h1>Solicitar eliminación de cuenta</h1>
         <p>
           Puedes eliminar tu cuenta directamente desde la app en
           <strong>Ajustes → Borrar cuenta</strong>.
-          Si prefieres hacerlo desde aquí, completa el formulario y procesaremos tu solicitud
-          en un plazo máximo de <strong>30 días</strong>.
+          Si prefieres hacerlo desde aquí, completa el formulario y te enviaremos
+          un email con un link de confirmación.
         </p>
       </div>
 
@@ -60,30 +60,53 @@
         <button
           type="submit"
           class="btn-delete"
-          [disabled]="!email || !username"
+          [disabled]="!email || !username || isLoading()"
         >
-          Solicitar eliminación
+          @if (isLoading()) {
+            Enviando solicitud...
+          } @else {
+            Solicitar eliminación
+          }
         </button>
       </form>
     }
 
     @if (submitted()) {
       <div class="success-card card-tp">
-        <div class="success-icon">✅</div>
-        <h2>Solicitud recibida</h2>
+        <div class="success-icon">✉️</div>
+        <h2>Email enviado</h2>
         <p>
-          Tu solicitud de eliminación de cuenta fue registrada exitosamente.
-          Procesaremos la eliminación de tu cuenta y todos tus datos asociados en
-          un plazo máximo de <strong>30 días</strong>.
-        </p>
-        <p>
-          Recibirás una confirmación en <strong>{{ email }}</strong> cuando el proceso esté completado.
+          Te enviamos un email a <strong>{{ email }}</strong> con un link de confirmación.
+          Haz click en el link para eliminar tu cuenta permanentemente.
         </p>
         <p class="success-note">
-          Si cambiaste de opinión, puedes seguir usando la app normalmente hasta que procesemos la solicitud.
-          Para cancelarla, contáctanos a <strong>jorgeolaya2803&#64;gmail.com</strong>.
+          El link expira en <strong>24 horas</strong>. Si no lo ves, revisa tu carpeta de spam.<br>
+          Si cambiaste de opinión, simplemente ignora el email.
         </p>
         <button class="btn-tp" (click)="resetForm()">Enviar otra solicitud</button>
+      </div>
+    }
+
+    @if (isConfirming()) {
+      <div class="success-card card-tp">
+        <div class="success-icon">✅</div>
+        <h2>Cuenta eliminada</h2>
+        <p>
+          Tu cuenta y todos los datos asociados (reseñas, comentarios, calificaciones)
+          han sido eliminados permanentemente.
+        </p>
+        <p class="success-note">
+          Gracias por haber usado TuProfe.
+        </p>
+      </div>
+    }
+
+    @if (hasError()) {
+      <div class="success-card card-tp">
+        <div class="success-icon">⚠️</div>
+        <h2>Ocurrió un error</h2>
+        <p>{{ errorMessage() }}</p>
+        <button class="btn-tp" (click)="resetForm()">Volver a intentar</button>
       </div>
     }
 
