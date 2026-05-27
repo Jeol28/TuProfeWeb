@@ -40,8 +40,9 @@
 
 .footer-links {
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
 
   a {
     font-family: var(--font-montserrat);
