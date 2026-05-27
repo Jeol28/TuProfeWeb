@@ -26,7 +26,6 @@ export class DeleteAccountComponent implements OnInit {
 
   email = '';
   username = '';
-  reason = '';
 
   state = signal<PageState>('form');
   errorMessage = signal<string>('');
@@ -89,7 +88,6 @@ export class DeleteAccountComponent implements OnInit {
   resetForm(): void {
     this.email    = '';
     this.username = '';
-    this.reason   = '';
     this.state.set('form');
     this.errorMessage.set('');
   }
