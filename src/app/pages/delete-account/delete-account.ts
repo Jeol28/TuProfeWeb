@@ -5,7 +5,7 @@ import { isSignInWithEmailLink, sendSignInLinkToEmail, signInWithEmailLink } fro
 import { auth } from '../../firebase.config';
 
 const ACTION_CODE_SETTINGS = {
-  url: 'https://tuprofe-89d43.web.app/delete-account',
+  url: 'https://www.tuprofeappmovil.com/delete-account',
   handleCodeInApp: true,
 };
 
