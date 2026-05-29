@@ -4,9 +4,11 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy';
 import { TermsComponent } from './pages/terms/terms';
 import { DeleteAccountComponent } from './pages/delete-account/delete-account';
 import { CsaeStandardsComponent } from './pages/csae-standards/csae-standards';
+import { AndroidInstallComponent } from './pages/android-install/android-install';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
+  { path: 'android', component: AndroidInstallComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'delete-account', component: DeleteAccountComponent },
